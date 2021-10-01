@@ -6,3 +6,4 @@ Demo nestjs With graphQL intergrated :
   - https://www.youtube.com/watch?v=eHn64NxMwJY&t=141s
   - runninng on port http://localhost:3000/graphql
   - code first
+- Add mysql as DB since it already running on computer

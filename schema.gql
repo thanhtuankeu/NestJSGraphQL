@@ -2,7 +2,15 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type CatsDTO {
+  catID: Int!
+  name: String!
+  age: String!
+}
+
 type Query {
   sayHello: String!
   sayHeho: String!
+  getAllCat: [CatsDTO!]!
+  find(id: Float!): CatsDTO!
 }
