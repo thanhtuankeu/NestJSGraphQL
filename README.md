@@ -7,3 +7,19 @@ Demo nestjs With graphQL intergrated :
   - runninng on port http://localhost:3000/graphql
   - code first
 - Add mysql as DB since it already running on computer
+
+find one cat in playground
+
+  query{
+    find(id: 1){
+      name,catID,age 
+    }
+  }
+  get all cat
+  {
+  getAllCat {
+    catID
+    name
+    age
+  }
+}
