@@ -2,15 +2,24 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Humans {
+  humanID: Int!
+  name: String!
+  cats: [Cats!]
+  project: Humans!
+}
+
 type Cats {
   catID: Int!
   name: String!
   age: String!
+  human: Humans
+  humanID: String!
 }
 
 type Query {
-  sayHello: String!
-  sayHeho: String!
   getAllCat: [Cats!]!
   cat(id: Float!): Cats!
+  getAllHuman: [Humans!]!
+  findOne(id: Float!): Humans!
 }
