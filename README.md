@@ -1,5 +1,5 @@
 Run app :
-- npm startck
+- npm start
 Demo nestjs With graphQL intergrated :
 - add swagger done : localhost:3003/api
 - add graph QL next : 
@@ -9,13 +9,15 @@ Demo nestjs With graphQL intergrated :
 - Add mysql as DB since it already running on computer
 
 find one cat in playground
-
+```
   query{
     find(id: 1){
       name,catID,age 
     }
   }
+  ```
 get all cat :
+```
   {
   getAllCat {
     catID
@@ -23,7 +25,9 @@ get all cat :
     age
   }
 }
+```
 get all cat with human related
+```
 {
   getAllCat {
     catID
@@ -34,9 +38,10 @@ get all cat with human related
     }
   }
 }
+```
 
 get all human with cat related
-
+```
 {
   getAllHuman {
     humanID
@@ -47,9 +52,9 @@ get all human with cat related
     }
   }
 }
-
+```
 query human with cat related
-
+```
 query {
   findOne(id: 1) {
     humanID
@@ -60,9 +65,9 @@ query {
     }
   }
 }
-
+```
 query cat with human related
-
+```
 query {
   cats(id: 1) {
     humanID
@@ -73,12 +78,13 @@ query {
     }
   }
 }
-
+```
 Postman Sample
+```
 curl --location --request POST 'http://localhost:3000/graphql' \
 --header 'Content-Type: application/json' \
 --header 'Origin: http://localhost:3000' \
 --data-raw '{"query":"{\r\n  getAllCat {\r\n    name,age\r\n  }\r\n}\r\n","variables":{}}'
-
+```
 Next :
 - Restrict field access

@@ -1,4 +1,3 @@
-import { NotFoundException } from '@nestjs/common';
 import { Args, Query, Resolver } from '@nestjs/graphql';
 import { CatsService } from 'src/service/cat.service';
 import { HumansService } from 'src/service/human.service';
