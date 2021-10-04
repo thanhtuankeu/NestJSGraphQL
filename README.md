@@ -15,11 +15,61 @@ find one cat in playground
       name,catID,age 
     }
   }
-  get all cat
+get all cat :
   {
   getAllCat {
     catID
     name
     age
+  }
+}
+get all cat with human related
+{
+  getAllCat {
+    catID
+    name
+    age
+    human {
+      name
+    }
+  }
+}
+
+get all human with cat related
+
+{
+  getAllHuman {
+    humanID
+    name
+    cats {
+      catID
+      name
+    }
+  }
+}
+
+query human with cat related
+
+query {
+  findOne(id: 1) {
+    humanID
+    name
+    cats {
+      catID
+      name
+    }
+  }
+}
+
+query cat with human related
+
+query {
+  cats(id: 1) {
+    humanID
+    name
+    human {
+      humanID
+      name
+    }
   }
 }

@@ -1,9 +1,8 @@
 import { NotFoundException } from '@nestjs/common';
-import { Args, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import { Args, Query, Resolver } from '@nestjs/graphql';
 import { CatsService } from 'src/service/cat.service';
 import { HumansService } from 'src/service/human.service';
 import { Cats } from './cat.entities';
-import { Humans } from './human/human.entities';
 
 @Resolver(() => Cats)
 export class CatsResolver {
@@ -17,13 +16,8 @@ export class CatsResolver {
     return await this.catsService.findAll();
   }
 
-  @Query(() => Cats)
-  async cat(@Args('id') id: number): Promise<Cats> {
-    const recipe = await this.catsService.findOne(id);
-    if (!recipe) {
-      throw new NotFoundException(id);
-    }
-    return recipe;
+  @Query(() => Cats, { name: 'cats' })
+  findOne(@Args('id') id: number) {
+    return this.catsService.findOne(id);
   }
-
 }

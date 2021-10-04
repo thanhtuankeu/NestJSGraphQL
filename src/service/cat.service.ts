@@ -15,10 +15,10 @@ export class CatsService {
   }
 
   findAll(): Promise<Cats[]> {
-    return this.catRepository.find();
+    return this.catRepository.find({ relations: ['human'] });
   }
 
   findOne(id: number): Promise<Cats> {
-    return this.catRepository.findOne({ catID: id });
+    return this.catRepository.findOne({ catID: id }, { relations: ['human'] });
   }
 }

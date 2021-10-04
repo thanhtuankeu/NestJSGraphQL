@@ -19,7 +19,7 @@ type Cats {
 
 type Query {
   getAllCat: [Cats!]!
-  cat(id: Float!): Cats!
+  cats(id: Float!): Cats!
   getAllHuman: [Humans!]!
   findOne(id: Float!): Humans!
 }
