@@ -12,5 +12,5 @@ type Query {
   sayHello: String!
   sayHeho: String!
   getAllCat: [Cats!]!
-  find(id: Float!): Cats!
+  cat(id: Float!): Cats!
 }
