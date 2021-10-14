@@ -22,6 +22,11 @@ export class CatsResolver {
     return this.catsService.create(cat);
   }
 
+  @Mutation(() => Cats)
+  deleteCat(@Args('id') id: number) {
+    return this.catsService.delete(id);
+  }
+
   @Query(() => [Cats])
   async getAllCat() {
     return await this.catsService.findAll();
@@ -31,5 +36,4 @@ export class CatsResolver {
   findOne(@Args('id') id: number) {
     return this.catsService.findOne(id);
   }
-
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Cats } from 'src/cats/cat.entities';
 import { CreateCatInput } from 'src/cats/cat.input';
@@ -27,5 +27,16 @@ export class CatsService {
 
   findOne(id: number): Promise<Cats> {
     return this.catRepository.findOne({ catID: id }, { relations: ['human'] });
+  }
+
+  async delete(id: number): Promise<Cats> {
+    const cat = this.findOne(id);
+    if (cat) {
+      const ret = await this.catRepository.delete(id);
+      if (ret.affected === 1) {
+        return cat;
+      }
+    }
+    throw new NotFoundException(`Record cannot find by id ${id}`);
   }
 }

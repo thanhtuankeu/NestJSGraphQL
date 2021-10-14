@@ -26,6 +26,7 @@ type Query {
 
 type Mutation {
   createCat(cat: CreateCatInput!): Cats!
+  deleteCat(id: Float!): Cats!
   createHuman(project: CreateHumanInput!): Humans!
 }
 
