@@ -14,7 +14,7 @@ type Cats {
   name: String!
   age: String!
   human: Humans
-  humanID: String!
+  humanID: Float
 }
 
 type Query {
@@ -22,4 +22,19 @@ type Query {
   cats(id: Float!): Cats!
   getAllHuman: [Humans!]!
   findOne(id: Float!): Humans!
+}
+
+type Mutation {
+  createCat(cat: CreateCatInput!): Cats!
+  createHuman(project: CreateHumanInput!): Humans!
+}
+
+input CreateCatInput {
+  name: String!
+  age: Float!
+  humanID: Float!
+}
+
+input CreateHumanInput {
+  name: String!
 }

@@ -1,11 +1,24 @@
-import { Args, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import {
+  Args,
+  Mutation,
+  Parent,
+  Query,
+  ResolveField,
+  Resolver,
+} from '@nestjs/graphql';
 import { HumansService } from 'src/service/human.service';
 import { Cats } from '../cat.entities';
 import { Humans } from './human.entities';
+import { CreateHumanInput } from './human.input';
 
 @Resolver(() => Humans)
 export class HumansResolver {
   constructor(private humanService: HumansService) {}
+
+  @Mutation(() => Humans)
+  createHuman(@Args('project') project: CreateHumanInput) {
+    return this.humanService.create(project);
+  }
 
   @Query(() => [Humans], { name: 'getAllHuman' })
   findAll() {

@@ -22,7 +22,7 @@ export class Cats {
   @Field(() => Humans, { nullable: true })
   human: Humans;
 
-  @Column()
-  @Field()
-  humanID: string;
+  @Column({ nullable: true })
+  @Field({ nullable: true })
+  humanID: number;
 }

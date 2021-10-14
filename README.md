@@ -1,4 +1,4 @@
-Run app :
+### Run app :
 - npm start
 Demo nestjs With graphQL intergrated :
 - add swagger done : localhost:3003/api
@@ -79,12 +79,31 @@ query {
   }
 }
 ```
-Postman Sample
+Create - Mutation
+```
+mutation {
+  createHuman(project: { name: "syladc" }) {
+    name
+  }
+}
+mutation {
+  createCat(cat: { name: "solar", age: 1 }) {
+    name
+    human {
+      name
+    }
+  }
+}
+
+```
+
+### Postman Sample
 ```
 curl --location --request POST 'http://localhost:3000/graphql' \
 --header 'Content-Type: application/json' \
 --header 'Origin: http://localhost:3000' \
 --data-raw '{"query":"{\r\n  getAllCat {\r\n    name,age\r\n  }\r\n}\r\n","variables":{}}'
 ```
-Next :
+### Next :
 - Restrict field access
+- Mutation 
