@@ -18,7 +18,7 @@ import { HumansResolver } from './human/human.resolver';
       autoSchemaFile: 'schema.gql',
     }),
     TypeOrmModule.forRoot({
-      type: 'mysql',
+      type: 'postgres',
       host: process.env.localhost,
       port: Number(process.env.DB_PORT),
       username: process.env.DB_USER,
@@ -26,10 +26,14 @@ import { HumansResolver } from './human/human.resolver';
       database: process.env.DB_NAME,
       entities: [Cats, Humans],
       synchronize: true,
+      ssl: {
+        rejectUnauthorized: false,
+      },
+      autoLoadEntities: true,
     }),
     TypeOrmModule.forFeature([Cats, Humans]),
   ],
   controllers: [],
   providers: [CatsResolver, CatsService, HumansService, HumansResolver],
 })
-export class CatModule {}
+export class CatModule { }

@@ -87,14 +87,13 @@ mutation {
   }
 }
 mutation {
-  createCat(cat: { name: "solar", age: 1 }) {
+  createCat(cat: { name: "solar", age: 1, humanID : 1 }) {
     name
     human {
       name
     }
   }
 }
-
 ```
 
 ### Postman Sample
