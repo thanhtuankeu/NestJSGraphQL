@@ -6,18 +6,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
+  testAPI(): string {
     return this.appService.getHello();
-  }
-
-  @Post()
-  postHello() {
-    return {
-      status: 'ok',
-      data: {
-        name: 'tuan',
-        age: '19',
-      },
-    };
   }
 }

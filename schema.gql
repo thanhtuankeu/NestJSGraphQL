@@ -17,17 +17,26 @@ type Cats {
   humanID: Float
 }
 
+type Url {
+  urlID: Int!
+  link: String!
+  shortURL: String!
+}
+
 type Query {
   getAllCat: [Cats!]!
   cats(id: Float!): Cats!
   getAllHuman: [Humans!]!
   findOne(id: Float!): Humans!
+  getAllurl: [Url!]!
+  queryUrl(urlShort: String!): Url!
 }
 
 type Mutation {
   createCat(cat: CreateCatInput!): Cats!
   deleteCat(id: Float!): Cats!
   createHuman(project: CreateHumanInput!): Humans!
+  createUrl(data: CreateUrlInput!): Url!
 }
 
 input CreateCatInput {
@@ -38,4 +47,8 @@ input CreateCatInput {
 
 input CreateHumanInput {
   name: String!
+}
+
+input CreateUrlInput {
+  link: String!
 }

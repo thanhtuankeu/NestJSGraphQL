@@ -7,6 +7,12 @@ Demo nestjs With graphQL intergrated :
   - runninng on port http://localhost:3000/graphql
   - code first
 - Add mysql as DB since it already running on computer
+- URL shortener :
+  url shorten attact to human or none
+  currently random by hashing
+  -random everytime
+  - prob will need optimise
+  - option : check if 3000 record plus . delete first 2000.
 
 find one cat in playground
 ```
@@ -95,6 +101,29 @@ mutation {
   }
 }
 ```
+URL related - Mutation
+```
+{
+  getAllurl {link}
+}
+mutation {
+  createUrl(
+    data: {
+      link: "https://github.com/philhawksworth/linkylinky/tree/master/src/assets/js"
+    }
+  ) {
+    link
+    urlID
+  }
+}
+
+query {
+  queryUrl(urlShort: "msiVSW") {
+    link
+  }
+}
+
+```
 
 ### Postman Sample
 ```
@@ -106,3 +135,5 @@ curl --location --request POST 'http://localhost:3000/graphql' \
 ### Next :
 - Restrict field access
 - Mutation 
+- Human with link
+- 
