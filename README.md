@@ -13,8 +13,18 @@ Demo nestjs With graphQL intergrated :
   -random everytime
   - prob will need optimise
   - option : check if 3000 record plus . delete first 2000.
+# Set enviroment
+set DB_HOST = "abc"
+set DB_PORT = "5432"
+set DB_USER = "abc"
+set DB_PASSWORD = "abc"
+set DB_NAME = "abc"
 
-Deploy to Heroku :
+set REDIS_DB_HOST = "abc"
+set REDIS_DB_NAME = "abc"
+set REDIS_DB_PASS = "abc"
+
+# Deploy to Heroku :
   - 
 find one cat in playground
 ```
@@ -106,7 +116,7 @@ mutation {
 URL related - Mutation
 ```
 {
-  getAllurl {link}
+  getAllurl {link,shortURL,urlID}
 }
 mutation {
   createUrl(
@@ -115,7 +125,8 @@ mutation {
     }
   ) {
     link
-    urlID
+    urlID,
+    shortURL
   }
 }
 
@@ -138,4 +149,6 @@ curl --location --request POST 'http://localhost:3000/graphql' \
 - Restrict field access
 - Mutation 
 - Human with link
-- 
+- intergrate redis to speed query ()
+  -init db done
+  - try db
