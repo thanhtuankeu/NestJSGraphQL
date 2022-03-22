@@ -21,6 +21,7 @@ import { urlsResolver } from './url/url.resolver';
       autoSchemaFile: 'schema.gql',
     }),
     TypeOrmModule.forRoot({
+      type: 'postgres',
       host: process.env.DB_HOST,
       port: Number(process.env.DB_PORT),
       username: process.env.DB_USER,

@@ -14,6 +14,8 @@ Demo nestjs With graphQL intergrated :
   - prob will need optimise
   - option : check if 3000 record plus . delete first 2000.
 
+Deploy to Heroku :
+  - 
 find one cat in playground
 ```
   query{
