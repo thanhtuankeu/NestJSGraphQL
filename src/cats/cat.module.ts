@@ -7,10 +7,13 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CatsService } from 'src/service/cat.service';
 import { HumansService } from 'src/service/human.service';
+import { urlsService } from 'src/service/url.service';
 import { Cats } from './cat.entities';
 import { CatsResolver } from './cats.resolver';
 import { Humans } from './human/human.entities';
 import { HumansResolver } from './human/human.resolver';
+import { Url } from './url/url.entities';
+import { urlsResolver } from './url/url.resolver';
 
 @Module({
   imports: [
@@ -18,7 +21,6 @@ import { HumansResolver } from './human/human.resolver';
       autoSchemaFile: 'schema.gql',
     }),
     TypeOrmModule.forRoot({
-      type: 'postgres',
       host: process.env.DB_HOST,
       port: Number(process.env.DB_PORT),
       username: process.env.DB_USER,
@@ -31,9 +33,16 @@ import { HumansResolver } from './human/human.resolver';
       },
       autoLoadEntities: true,
     }),
-    TypeOrmModule.forFeature([Cats, Humans]),
+    TypeOrmModule.forFeature([Cats, Humans, Url]),
   ],
   controllers: [],
-  providers: [CatsResolver, CatsService, HumansService, HumansResolver],
+  providers: [
+    CatsResolver,
+    CatsService,
+    HumansService,
+    HumansResolver,
+    urlsResolver,
+    urlsService,
+  ],
 })
-export class CatModule { }
+export class CatModule {}
