@@ -7,6 +7,9 @@ import { InjectRedis, Redis } from '@svtslv/nestjs-ioredis';
 
 @Injectable()
 export class RedisCachedService {
+  
+  EXPIRE_TIME = 1000;
+
   constructor(@InjectRedis() private readonly redis: Redis) {}
 
   async get(key: string) {
@@ -15,6 +18,6 @@ export class RedisCachedService {
   }
   async set(key: string, value: string): Promise<string> {
     console.log('set', key, value);
-    return this.redis.set(key, value);
+    return this.redis.set(key, value, { ttl: this.EXPIRE_TIME });
   }
 }
