@@ -13,6 +13,9 @@ Demo nestjs With graphQL intergrated :
   -random everytime
   - prob will need optimise
   - option : check if 3000 record plus . delete first 2000.
+
+Redis reduce query by haft if hit 
+
 # Set enviroment
 set DB_HOST = "abc"
 set DB_PORT = "5432"
@@ -20,9 +23,8 @@ set DB_USER = "abc"
 set DB_PASSWORD = "abc"
 set DB_NAME = "abc"
 
-set REDIS_DB_HOST = "abc"
-set REDIS_DB_NAME = "abc"
-set REDIS_DB_PASS = "abc"
+set REDIS_URL = "abc"
+
 
 # Deploy to Heroku :
   - 
