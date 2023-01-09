@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Url } from 'src/cats/url/url.entities';
-import { CreateUrlInput } from 'src/cats/url/url.input';
+import { Url } from 'src/url/url.entities';
+import { CreateUrlInput } from 'src/url/url.input';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { RedisCachedService } from './rediscached.service';

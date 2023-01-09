@@ -8,7 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { RedisModule } from '@svtslv/nestjs-ioredis';
 import { Cats } from './cats/cat.entities';
 import { Humans } from './cats/human/human.entities';
-import { Url } from './cats/url/url.entities';
+import { Url } from './url/url.entities';
 import { RedisCachedService } from './service/rediscached.service';
 
 @Global()
@@ -17,7 +17,7 @@ import { RedisCachedService } from './service/rediscached.service';
     RedisModule.forRootAsync({
       useFactory: () => ({
         config: {
-          url: process.env.REDIS_URL,
+          url: process.env.REDIS_URL ? process.env.REDIS_URL : 'localhost:6379',
         },
       }),
     }),
@@ -26,16 +26,13 @@ import { RedisCachedService } from './service/rediscached.service';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DB_HOST,
-      port: Number(process.env.DB_PORT),
-      username: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
+      host: process.env.DB_HOST ? process.env.DB_HOST : 'localhost',
+      port: Number(process.env.DB_PORT) ? Number(process.env.DB_PORT) : 5432,
+      username: process.env.DB_USER ? process.env.DB_USER : 'airflow',
+      password: process.env.DB_PASSWORD ? process.env.DB_PASSWORD : 'airflow',
+      database: process.env.DB_NAME ? process.env.DB_NAME : 'zoro',
       entities: [Cats, Humans],
       synchronize: true,
-      ssl: {
-        rejectUnauthorized: false,
-      },
       autoLoadEntities: true,
     }),
     TypeOrmModule.forFeature([Cats, Humans, Url]),

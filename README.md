@@ -17,13 +17,13 @@ Demo nestjs With graphQL intergrated :
 Redis reduce query by haft if hit 
 
 # Set enviroment
-set DB_HOST = "abc"
+set DB_HOST = "http://localhost/"
 set DB_PORT = "5432"
-set DB_USER = "abc"
-set DB_PASSWORD = "abc"
-set DB_NAME = "abc"
+set DB_USER = "airflow"
+set DB_PASSWORD = "airflow"
+set DB_NAME = "zoro"
 
-set REDIS_URL = "abc"
+set REDIS_URL = "localhost:6379"
 
 
 # Deploy to Heroku :
