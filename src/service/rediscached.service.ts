@@ -21,7 +21,7 @@ export class RedisCachedService {
   }
   async set(key: string, value: string): Promise<string> {
     try {
-      return await this.redis.set(key, value, { ttl: this.EXPIRE_TIME });
+      return await this.redis.set(key, value, 'ex', this.EXPIRE_TIME);
     } catch (err) {
       console.log(err);
     }
