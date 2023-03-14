@@ -22,6 +22,7 @@ set DB_PORT = "5432"
 set DB_USER = "airflow"
 set DB_PASSWORD = "airflow"
 set DB_NAME = "zoro"
+set OPENAI_API_KEY = "key"
 
 set REDIS_URL = "localhost:6379"
 

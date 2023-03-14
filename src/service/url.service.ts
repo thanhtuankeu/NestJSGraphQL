@@ -12,7 +12,7 @@ export class urlsService {
     @InjectRepository(Url)
     private urlRepository: Repository<Url>,
     private readonly redisCachedService: RedisCachedService,
-  ) { }
+  ) {}
 
   // create a new URL
   async create(_url: CreateUrlInput): Promise<Url> {
@@ -23,6 +23,7 @@ export class urlsService {
     return this.urlRepository.save(urlOb);
   }
   findAll() {
+    console.log('Admin Query all data');
     return this.urlRepository.find();
   }
 
@@ -56,6 +57,7 @@ export class urlsService {
       };
     }
     const result = await this.urlRepository.findOne({ shortURL: urlShort });
+    console.log('data from DB', result);
     if (result) {
       this.redisCachedService.set(urlShort, result.link);
       return result;

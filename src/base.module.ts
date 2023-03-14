@@ -34,6 +34,7 @@ import { RedisCachedService } from './service/rediscached.service';
       entities: [Cats, Humans],
       synchronize: true,
       autoLoadEntities: true,
+      ssl: true,
     }),
     TypeOrmModule.forFeature([Cats, Humans, Url]),
   ],
