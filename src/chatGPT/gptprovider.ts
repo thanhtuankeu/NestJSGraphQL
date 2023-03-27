@@ -35,7 +35,7 @@ export class GPTProviderService {
       })
       .then((result) => {
         console.log('return ------------------------', result.data);
-        return JSON.stringify(result.data.choices[0].message);
+        return result.data.choices[0].message.content;
       })
       .catch((err) => {
         return 'Later ....';
