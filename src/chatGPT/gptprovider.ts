@@ -3,7 +3,7 @@ https://docs.nestjs.com/providers#services
 */
 
 import { Injectable } from '@nestjs/common';
-import { Configuration, OpenAIApi } from 'openai';
+import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai';
 
 @Injectable()
 export class GPTProviderService {
@@ -17,6 +17,10 @@ export class GPTProviderService {
   }
 
   async askGPT(question: string): Promise<string> {
+    const questionPreps: ChatCompletionRequestMessage[] = [
+      { role: 'user', content: question },
+      { role: 'assistant', content: 'ChatGPT response here...' },
+    ];
     if (!this.configuration.apiKey) {
       return 'OpenAI API key not configured, please follow instructions in README.md';
     }
@@ -25,19 +29,13 @@ export class GPTProviderService {
     }
 
     return await this.openai
-      .createCompletion({
-        model: 'text-davinci-003',
-        prompt: question,
-        temperature: 0.9,
-        max_tokens: 150,
-        top_p: 1,
-        frequency_penalty: 0.0,
-        presence_penalty: 0.6,
-        stop: [' Human:', ' AI:'],
+      .createChatCompletion({
+        model: 'gpt-3.5-turbo',
+        messages: questionPreps,
       })
       .then((result) => {
         console.log('return ------------------------', result.data);
-        return result.data.choices[0].text;
+        return JSON.stringify(result.data.choices[0].message);
       })
       .catch((err) => {
         return 'Later ....';
