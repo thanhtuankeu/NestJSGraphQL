@@ -46,4 +46,10 @@ export class AppController {
     console.log('asking ', request.question);
     return await this.chatgptService.askGPTAI(request.question);
   }
+
+  @Post('chatgptStream')
+  async askChatGPTStream(@Body() request: RequestDto): Promise<ResponseDto> {
+    console.log('askChatGPTStream ', request.question);
+    return await this.chatgptService.askGPTAIStream(request.question);
+  }
 }
